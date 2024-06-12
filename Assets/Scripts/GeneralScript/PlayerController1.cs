@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController1 : MonoBehaviour
 {
-    public float moveSpeed = 1;
+    public float moveSpeed;
     public Animator animator;
     public GameObject crossHair;
     public List<Weapon> weapons;
@@ -90,8 +90,8 @@ public class PlayerController1 : MonoBehaviour
         {
             isMoving = movement.magnitude > 0;
             if (movement.magnitude > 1) { movement.Normalize(); }
-            moveSpeed = Input.GetKey(KeyCode.LeftShift) ? 2 : 1;
-            transform.position = transform.position + movement * moveSpeed * Time.deltaTime;
+            float moveCurrent = Input.GetKey(KeyCode.LeftShift) ? moveSpeed*2 : moveSpeed;
+            transform.position = transform.position + movement * moveCurrent * Time.deltaTime;
         }
     }
 
@@ -124,7 +124,9 @@ public class PlayerController1 : MonoBehaviour
         if (!isMoving)
         {
             aim = Input.mousePosition;
+            Debug.Log(aim+" 1");
             aim = Camera.main.ScreenToWorldPoint(aim);
+            Debug.Log(aim+" 2");
             aim.z = 0;
            crossHair.transform.position = aim;
             crossHair.transform.position = aim;
