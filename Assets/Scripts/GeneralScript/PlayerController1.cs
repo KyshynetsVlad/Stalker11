@@ -25,6 +25,8 @@ public class PlayerController1 : MonoBehaviour
     private float lastShootTime = 0;
     private WeaponName currentNameWeapon = WeaponName.Empty;
 
+    public VectorValue pos;
+
     KeyCode[] weaponKeys = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4 };
 
 
@@ -34,6 +36,7 @@ public class PlayerController1 : MonoBehaviour
 
     private void Start()
     {
+        transform.position = pos.initialValue;
         if (weapons.Count > 0)
         {
             currentWeapon = weapons[currentWeaponIndex];
