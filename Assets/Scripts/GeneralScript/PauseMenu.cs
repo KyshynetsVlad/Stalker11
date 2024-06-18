@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
     {
         ResetScriptableObjects();
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Location1");
     }
 
     public void LoadMainMenu()
