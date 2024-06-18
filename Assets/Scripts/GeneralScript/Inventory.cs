@@ -73,7 +73,6 @@ public class Inventory : MonoBehaviour
         Debug.Log(slots.Count);
         for (int i = 0; i < slots.Count; i++)
         {
-            Debug.Log(i+ " i " + slots.Count);
             if (i < weapons.Count)
             {
                Debug.Log("+1");

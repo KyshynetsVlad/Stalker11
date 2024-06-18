@@ -111,6 +111,8 @@ MonoBehaviour:
   pos: {fileID: 11400000, guid: 0320b7097a003ee488c0a315d542a9c9, type: 2}
   playerHealth: {fileID: 11400000, guid: 21edea629a36f2d4d90a87b69cbf5601, type: 2}
   weaponData: {fileID: 11400000, guid: ecba6b2e10497a849a13a041a57f9b0c, type: 2}
+  pauseMenu: {fileID: 0}
+  pause: {fileID: 0}
 --- !u!95 &1164095991642437097
 Animator:
   serializedVersion: 4
@@ -207,7 +209,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.38898027}
+  m_Offset: {x: -0.0051042736, y: -0.3736676}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -218,7 +220,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.68, y: 0.24203947}
+  m_Size: {x: 0.5064544, y: 0.21141407}
   m_EdgeRadius: 0
 --- !u!114 &230981465705399029
 MonoBehaviour:

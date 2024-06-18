@@ -3555,6 +3555,14 @@ PrefabInstance:
       propertyPath: avatarImage
       value: 
       objectReference: {fileID: 1665671495}
+    - target: {fileID: 1374494298659802559, guid: d18d788319eb82344b4afc56243e5404, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0506253
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374494298659802559, guid: d18d788319eb82344b4afc56243e5404, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.015312642
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d18d788319eb82344b4afc56243e5404, type: 3}
 --- !u!1001 &5924417396540262086
