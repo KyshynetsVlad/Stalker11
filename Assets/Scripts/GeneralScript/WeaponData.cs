@@ -1,19 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponData : MonoBehaviour
+[CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObjects/WeaponData", order = 1)]
+public class WeaponData : ScriptableObject
 {
-    public new WeaponName name;
-    public WeaponType type;
-    public float damage;
-    public GameObject bulletPrefab;
-    public float fireRate;
-    public int maxAmmo;
-    public float reloadTime;
-    public Sprite weaponIcon;
-    public Sprite ammoWeapon;
+    public List<Weapon> weapons;
+    public int currentWeaponIndex;
 
-    public Weapon GetWeapon()
+    public void Reset()
     {
-        return new Weapon(name, type, damage, bulletPrefab, fireRate, maxAmmo, reloadTime);
+        weapons = new List<Weapon>();
+        currentWeaponIndex = 0;
     }
 }

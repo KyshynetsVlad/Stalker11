@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
         // ?????????????? Weapon ? ????? ???????
         if (enemyWeapon != null)
         {
-            WeaponData weaponData = enemyWeapon.GetComponent<WeaponData>();
+            WeaponDataEnemy weaponData = enemyWeapon.GetComponent<WeaponDataEnemy>();
 
             if (weaponData != null)
             {

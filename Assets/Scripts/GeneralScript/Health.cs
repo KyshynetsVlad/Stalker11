@@ -1,28 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public abstract class Health : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
 
-    private void Start()
-    {
-        currentHealth = maxHealth;
-    }
+    public abstract void TakeDamage(float damage);
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    void Die()
+    protected void Die()
     {
         Destroy(gameObject);
     }

@@ -3,7 +3,13 @@ guid: 31410c44af9f894478d7384bae990f35
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - crossHair: {instanceID: 0}
+  - inventory: {instanceID: 0}
+  - pos: {fileID: 11400000, guid: 0320b7097a003ee488c0a315d542a9c9, type: 2}
+  - playerHealth: {fileID: 11400000, guid: 21edea629a36f2d4d90a87b69cbf5601, type: 2}
+  - weaponData: {fileID: 11400000, guid: ecba6b2e10497a849a13a041a57f9b0c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

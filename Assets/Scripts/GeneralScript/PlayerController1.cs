@@ -1,34 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController1 : MonoBehaviour
 {
     public float moveSpeed;
     public Animator animator;
     public GameObject crossHair;
-    public List<Weapon> weapons;
-    public List<Transform> inventorySlots;
-    public List<Image> slotBorders;
-    public TextMeshProUGUI currentAmmoText; 
-    public TextMeshProUGUI maxAmmoText;
-    public TextMeshProUGUI nameWeapon;
-    public GameObject ammoHUD;
-    public Image ammoWeapon;
-    private Weapon currentWeapon;
-    private int currentWeaponIndex = 0;
+    public Inventory inventory;
     private bool isAiming = false;
     private bool isMoving = false;
     private bool isReloading = false;
     private float lastShootTime = 0;
-    private WeaponName currentNameWeapon = WeaponName.Empty;
 
     public VectorValue pos;
+    public PlayerHealth playerHealth;
+    public WeaponData weaponData;
+    public PauseMenu pauseMenu;
+    public PauseMenu pause;
 
     KeyCode[] weaponKeys = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4 };
-
 
     Vector3 movement;
     Vector3 aim;
@@ -36,47 +27,83 @@ public class PlayerController1 : MonoBehaviour
 
     private void Start()
     {
-        transform.position = pos.initialValue;
-        if (weapons.Count > 0)
+        if (pos == null)
         {
-            currentWeapon = weapons[currentWeaponIndex];
-            currentWeapon.currentAmmo = currentWeapon.maxAmmo;
+            Debug.LogError("VectorValue 'pos' is not assigned in the inspector.");
+            return;
         }
-        UpdateInventoryUI();
-        
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory is not assigned in the inspector.");
+            return;
+        }
+        if (playerHealth == null)
+        {
+            Debug.LogError("PlayerHealth is not assigned in the inspector.");
+            return;
+        }
+        if (weaponData == null)
+        {
+            Debug.LogError("WeaponData is not assigned in the inspector.");
+            return;
+        }
+        if (crossHair == null)
+        {
+            Debug.LogError("CrossHair is not assigned in the inspector.");
+            return;
+        }
+        if (animator == null)
+        {
+            Debug.LogError("Animator is not assigned in the inspector.");
+            return;
+        }
+        transform.position = pos.initialValue;
+        inventory.InitializeInventory();
+        InitializeHealth();
+        InitializeInventory();
+    }
+
+    private void InitializeHealth()
+    {
+        GetComponent<Health>().maxHealth = playerHealth.maxHealth;
+        GetComponent<Health>().currentHealth = playerHealth.currentHealth;
+    }
+
+    private void InitializeInventory()
+    {
+        inventory.weapons = weaponData.weapons;
+        inventory.currentWeaponIndex = weaponData.currentWeaponIndex;
+        inventory.InitializeInventory();
     }
 
     private void Update()
     {
-
-
-
         movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         Move();
         Animate();
-        UpdateAmmoHUDVisibility();
+        pause.Pauses();
 
         for (int i = 0; i < weaponKeys.Length; i++)
         {
             if (Input.GetKeyDown(weaponKeys[i]))
             {
-                SwitchWeapon(i);
-                break; 
+                inventory.SwitchWeapon(i);
+                break;
             }
         }
 
-        if (currentNameWeapon != WeaponName.Empty)
+        if (inventory.GetCurrentWeaponName() != WeaponName.Empty)
         {
             Aim();
-            if (currentWeapon.type == WeaponType.Auto) 
+            if (inventory.GetCurrentWeapon().type == WeaponType.Auto)
             {
-                if((Input.GetKey(KeyCode.Mouse0)||Input.GetKeyDown(KeyCode.Mouse0))&&isAiming)
+                if ((Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse0)) && isAiming)
                     Shoot();
             }
-            if (currentWeapon.type == WeaponType.Semi)
+            if (inventory.GetCurrentWeapon().type == WeaponType.Semi)
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0)&&isAiming)
+                if (Input.GetKeyDown(KeyCode.Mouse0) && isAiming)
                     Shoot();
             }
             if (Input.GetKey(KeyCode.R))
@@ -89,11 +116,11 @@ public class PlayerController1 : MonoBehaviour
 
     void Move()
     {
-        if (!isAiming&&!isReloading)
+        if (!isAiming && !isReloading)
         {
             isMoving = movement.magnitude > 0;
             if (movement.magnitude > 1) { movement.Normalize(); }
-            float moveCurrent = Input.GetKey(KeyCode.LeftShift) ? moveSpeed*2 : moveSpeed;
+            float moveCurrent = Input.GetKey(KeyCode.LeftShift) ? moveSpeed * 2 : moveSpeed;
             transform.position = transform.position + movement * moveCurrent * Time.deltaTime;
         }
     }
@@ -103,7 +130,7 @@ public class PlayerController1 : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Magnitude", movement.magnitude);
-        animator.SetTrigger($"{currentNameWeapon}");
+        animator.SetTrigger($"{inventory.GetCurrentWeaponName()}");
 
         if (isAiming)
         {
@@ -127,11 +154,8 @@ public class PlayerController1 : MonoBehaviour
         if (!isMoving)
         {
             aim = Input.mousePosition;
-            Debug.Log(aim+" 1");
             aim = Camera.main.ScreenToWorldPoint(aim);
-            Debug.Log(aim+" 2");
             aim.z = 0;
-           crossHair.transform.position = aim;
             crossHair.transform.position = aim;
 
             if (Input.GetKey(KeyCode.Mouse1))
@@ -150,29 +174,27 @@ public class PlayerController1 : MonoBehaviour
             }
         }
     }
-    
 
     void Shoot()
     {
-        
-        if (Time.time >= (lastShootTime + currentWeapon.fireRate))
+        if (Time.time >= (lastShootTime + inventory.GetCurrentWeapon().fireRate))
         {
-            if (currentWeapon.currentAmmo > 0 && !isReloading) 
+            if (inventory.GetCurrentWeapon().currentAmmo > 0 && !isReloading)
             {
                 Vector2 shootDirection = crossHair.transform.localPosition;
                 shootDirection.Normalize();
 
-                GameObject bullet = Instantiate(currentWeapon.bulletPrefab, transform.position, Quaternion.identity);
+                GameObject bullet = Instantiate(inventory.GetCurrentWeapon().bulletPrefab, transform.position, Quaternion.identity);
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
-                bulletScript.SetWeapon(currentWeapon);
+                bulletScript.SetWeapon(inventory.GetCurrentWeapon());
                 bulletScript.velocity = shootDirection * 10;
                 bulletScript.player = gameObject;
                 bullet.transform.Rotate(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg);
                 Destroy(bullet, 2);
                 lastShootTime = Time.time;
-                currentWeapon.currentAmmo--;
-                currentWeapon.currentAmmo = Mathf.Max(0, currentWeapon.currentAmmo);
-                UpdateAmmoUI();
+                inventory.GetCurrentWeapon().currentAmmo--;
+                inventory.GetCurrentWeapon().currentAmmo = Mathf.Max(0, inventory.GetCurrentWeapon().currentAmmo);
+                inventory.UpdateAmmoUI();
             }
         }
     }
@@ -181,88 +203,10 @@ public class PlayerController1 : MonoBehaviour
     {
         isReloading = true;
         animator.SetBool("Reload", isReloading);
-        yield return new WaitForSeconds(currentWeapon.reloadTime);
-        currentWeapon.currentAmmo = currentWeapon.maxAmmo;
+        yield return new WaitForSeconds(inventory.GetCurrentWeapon().reloadTime);
+        inventory.GetCurrentWeapon().currentAmmo = inventory.GetCurrentWeapon().maxAmmo;
         isReloading = false;
         animator.SetBool("Reload", isReloading);
-        UpdateAmmoUI();
-    }
-
-    void SwitchWeapon(int index)
-    {
-        if (index >= 0 && index < weapons.Count)
-        {
-            currentWeaponIndex = Mathf.Clamp(index, 0, weapons.Count - 1);
-            currentWeapon = weapons[currentWeaponIndex];
-            currentWeapon.currentAmmo = currentWeapon.maxAmmo;
-            currentNameWeapon = currentWeapon.name;
-            UpdateInventoryUI();
-            UpdateAmmoUI();
-        }
-        else
-        {
-            Debug.LogWarning("Invalid weapon index: " + index);
-        }
-    }
-
-    public void PickUpWeapon(Weapon newWeapon)
-    {
-        weapons.Add(newWeapon);
-        SwitchWeapon(weapons.Count - 1);
-    }
-
-    void UpdateInventoryUI()
-    {
-        if (inventorySlots.Count > 0)
-        {
-            for (int i = 0; i < inventorySlots.Count; i++)
-            {
-                Transform slot = inventorySlots[i];
-
-                if (slot != null)
-                {
-                    Image weaponIcon = slot.GetComponent<Image>();
-
-                    if (weaponIcon != null)
-                    {
-                        if (i < weapons.Count)
-                        {
-                            weaponIcon.sprite = weapons[i].weaponIcon;
-                            weaponIcon.gameObject.SetActive(true);
-                        }
-                        else
-                        {
-                            weaponIcon.gameObject.SetActive(false);
-                        }
-                    }
-                }
-                if (slotBorders != null && i < slotBorders.Count)
-                {
-                    Image border = slotBorders[i];
-                    if (border != null)
-                    {
-                        border.gameObject.SetActive(i == currentWeaponIndex);
-                    }
-                }
-            }
-        }
-    }
-
-    void UpdateAmmoUI()
-    {
-        if (currentAmmoText != null && maxAmmoText != null && nameWeapon != null && currentWeapon.bulletPrefab != null)
-        {
-            currentAmmoText.text = currentWeapon.currentAmmo.ToString();
-            maxAmmoText.text = currentWeapon.maxAmmo.ToString();
-            nameWeapon.text = currentNameWeapon.ToString();
-            ammoWeapon.sprite = currentWeapon.ammoWeapon;
-            
-        }
-    }
-    void UpdateAmmoHUDVisibility()
-    {
-        bool isWeaponActive = currentNameWeapon != WeaponName.Empty;
-        if (ammoHUD != null)
-            ammoHUD.gameObject.SetActive(isWeaponActive);
+        inventory.UpdateAmmoUI();
     }
 }

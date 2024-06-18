@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8478868254895926144}
   - component: {fileID: 8478868254895926159}
   - component: {fileID: 8478868254895926158}
-  - component: {fileID: 7015338656252136391}
   m_Layer: 0
   m_Name: AK-74 - Weapon
   m_TagString: Untagged
@@ -125,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03ef3a6df2b1394584eb1ea7aad02e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
+  newWeapon:
     name: 2
     type: 1
     damage: 20
@@ -133,27 +132,6 @@ MonoBehaviour:
     fireRate: 0.2
     maxAmmo: 30
     reloadTime: 1
-    currentAmmo: 30
+    currentAmmo: 0
     weaponIcon: {fileID: 21300000, guid: 0c0df6fb1543f3c4daaec0fc50734741, type: 3}
     ammoWeapon: {fileID: 21300000, guid: 9eec85c9595dfe3498ffce4bd5289900, type: 3}
---- !u!114 &7015338656252136391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8478868254895926147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e5103c60eea484684e57433aca89f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: 2
-  type: 1
-  damage: 20
-  bulletPrefab: {fileID: 7837798365343297617, guid: a466630435febf7489f4744379ba4807, type: 3}
-  fireRate: 0.2
-  maxAmmo: 1
-  reloadTime: 30
-  weaponIcon: {fileID: 21300000, guid: 0c0df6fb1543f3c4daaec0fc50734741, type: 3}
-  ammoWeapon: {fileID: 21300000, guid: 9eec85c9595dfe3498ffce4bd5289900, type: 3}

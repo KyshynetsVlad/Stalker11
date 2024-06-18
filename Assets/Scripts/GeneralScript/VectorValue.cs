@@ -6,4 +6,10 @@ using UnityEngine;
 public class VectorValue : ScriptableObject
 {
     public Vector3 initialValue;
+
+    public void Reset()
+    {
+        initialValue = Vector3.zero;
+    }
 }
+
