@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDBar : MonoBehaviour
 {
     public Image healthBar;
     public Image staminaBar;
     public Image avatarImage;
+    public TextMeshProUGUI smallHealthCountText;
+    public TextMeshProUGUI largeHealthCountText;
 
     public Sprite[] healthSprites;
     public Sprite[] staminaSprites;
@@ -16,13 +19,14 @@ public class HUDBar : MonoBehaviour
     private int currentStamina;
     private int maxStamina = 100;
     private Health playerHealth;
+    private Inventory playerInventory;
 
     private void Start()
     {
         currentStamina = 100;
-
-        // Ініціалізація компонентів Health
         playerHealth = GetComponent<Health>();
+        playerInventory = GetComponent<Inventory>();
+
         if (playerHealth != null)
         {
             currentHealth = playerHealth.currentHealth;
@@ -44,6 +48,11 @@ public class HUDBar : MonoBehaviour
             UpdateHealthBar();
             UpdateStaminaBar();
             UpdateAvatarImage();
+        }
+
+        if (playerInventory != null)
+        {
+            UpdateHealthPickupCount();
         }
     }
 
@@ -72,5 +81,11 @@ public class HUDBar : MonoBehaviour
             int avatarIndex = Mathf.FloorToInt(currentHealth / (maxHealth / avatarSprites.Length));
             avatarImage.sprite = avatarSprites[Mathf.Clamp(avatarIndex, 0, avatarSprites.Length - 1)];
         }
+    }
+
+    private void UpdateHealthPickupCount()
+    {
+        smallHealthCountText.text = playerInventory.GetHealthPickupCount(HealthPickupType.Small).ToString();
+        largeHealthCountText.text = playerInventory.GetHealthPickupCount(HealthPickupType.Large).ToString();
     }
 }
