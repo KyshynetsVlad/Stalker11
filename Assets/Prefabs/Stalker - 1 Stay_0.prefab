@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4770071923300021046}
   - component: {fileID: 4770071923300021042}
   - component: {fileID: 4770071923300021043}
-  - component: {fileID: 4770071923300021041}
   - component: {fileID: 4770071923300021040}
+  - component: {fileID: 230612650308544962}
   m_Layer: 0
   m_Name: Stalker - 1 Stay_0
   m_TagString: Enemy
@@ -156,20 +156,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4770071923300021041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4770071923300021047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e9f58e008d1aa8459ab80360e8b9b62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 0
 --- !u!114 &4770071923300021040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,4 +174,18 @@ MonoBehaviour:
   shootingRange: 3
   enemyFireRate: 0.5
   enemyVision: 4
-  enemyWeapon: {fileID: 0}
+  enemyWeapon: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
+--- !u!114 &230612650308544962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770071923300021047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739de87bf47d45149851e5a713955d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0

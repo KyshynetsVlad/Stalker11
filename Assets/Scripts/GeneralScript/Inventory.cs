@@ -17,8 +17,6 @@ public class Inventory : MonoBehaviour
     private Weapon currentWeapon;
     private WeaponName currentNameWeapon = WeaponName.Empty;
 
-    private Dictionary<HealthPickupType, int> healthPickups = new Dictionary<HealthPickupType, int>();
-
     public void InitializeInventory()
     {
         if (weapons.Count > 0)
@@ -86,31 +84,6 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    //public void UpdateInventoryUI()
-    //{
-    //    if (currentWeapon != null)
-    //    {
-    //        currentAmmoText.text = currentWeapon.currentAmmo.ToString();
-    //        maxAmmoText.text = currentWeapon.maxAmmo.ToString();
-    //        nameWeaponText.text = currentWeapon.weaponName.ToString();
-    //    }
-
-    //    for (int i = 0; i < slots.Count; i++)
-    //    {
-    //        if (i < weapons.Count)
-    //        {
-    //            slots[i].SetWeapon(weapons[i]);
-    //        }
-    //        else
-    //        {
-    //            slots[i].ClearSlot();
-    //        }
-    //    }
-
-    //    // Обновление UI аптечек
-    //    // Добавьте сюда код для обновления отображения аптечек в инвентаре
-    //    // Например, текст или иконки, показывающие количество каждого типа аптечек
-    //}
 
     public void UpdateAmmoUI()
     {
@@ -131,35 +104,4 @@ public class Inventory : MonoBehaviour
             ammoHUD.gameObject.SetActive(isWeaponActive);
         }
     }
-
-    public void AddHealthPickup(HealthPickup pickup)
-    {
-        if (!healthPickups.ContainsKey(pickup.pickupType))
-        {
-            healthPickups[pickup.pickupType] = 0;
-        }
-        healthPickups[pickup.pickupType]++;
-        UpdateInventoryUI();
-    }
-
-    public void UseHealthPickup(HealthPickupType type)
-    {
-        if (healthPickups.ContainsKey(type) && healthPickups[type] > 0)
-        {
-            healthPickups[type]--;
-            // Лечение игрока в зависимости от типа
-            // Например: playerHealth.Heal(healthPickupHealAmount[type]);
-            UpdateInventoryUI();
-        }
-    }
-
-    public int GetHealthPickupCount(HealthPickupType type)
-    {
-        if (healthPickups.ContainsKey(type))
-        {
-            return healthPickups[type];
-        }
-        return 0;
-    }
-
 }

@@ -49,14 +49,13 @@ public class HUDBar : MonoBehaviour
             UpdateStaminaBar();
             UpdateAvatarImage();
         }
-
-        if (playerInventory != null)
+        else
         {
-            UpdateHealthPickupCount();
+            Debug.LogWarning("playerHealth is Null");
         }
     }
 
-    private void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         if (healthSprites.Length > 0)
         {
@@ -81,11 +80,5 @@ public class HUDBar : MonoBehaviour
             int avatarIndex = Mathf.FloorToInt(currentHealth / (maxHealth / avatarSprites.Length));
             avatarImage.sprite = avatarSprites[Mathf.Clamp(avatarIndex, 0, avatarSprites.Length - 1)];
         }
-    }
-
-    private void UpdateHealthPickupCount()
-    {
-        smallHealthCountText.text = playerInventory.GetHealthPickupCount(HealthPickupType.Small).ToString();
-        largeHealthCountText.text = playerInventory.GetHealthPickupCount(HealthPickupType.Large).ToString();
     }
 }

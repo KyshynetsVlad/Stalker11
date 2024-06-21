@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66eb2d9a793010742b95e215b29578b4, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: 
-  weapons: []
+  weapons:
+  - name: 1
+    type: 0
+    damage: 40
+    bulletPrefab: {fileID: 7837798365343297617, guid: a466630435febf7489f4744379ba4807, type: 3}
+    fireRate: 0.4
+    maxAmmo: 2
+    reloadTime: 1
+    currentAmmo: 1
+    weaponIcon: {fileID: 21300000, guid: d814c33e96c270a4da94b098e4f71fbf, type: 3}
+    ammoWeapon: {fileID: 21300000, guid: c41902d00b575d5448aaf782235c93af, type: 3}
   currentWeaponIndex: 0

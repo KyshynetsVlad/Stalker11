@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1164095991642437098}
   - component: {fileID: 1164095991642437099}
   - component: {fileID: 1164095991642437096}
+  - component: {fileID: 230981465705399029}
+  - component: {fileID: 1164095991642437101}
   - component: {fileID: 1164095991642437097}
   - component: {fileID: 1164095991642437103}
-  - component: {fileID: 1164095991642437101}
   - component: {fileID: 230981465705399030}
-  - component: {fileID: 230981465705399029}
   - component: {fileID: 1374494298659802559}
   m_Layer: 0
   m_Name: Saracin
@@ -113,6 +113,65 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: ecba6b2e10497a849a13a041a57f9b0c, type: 2}
   pauseMenu: {fileID: 0}
   pause: {fileID: 0}
+--- !u!114 &230981465705399029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164095991642437076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c52b157e0511240abacd20298f2bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  playerHealth: {fileID: 11400000, guid: 21edea629a36f2d4d90a87b69cbf5601, type: 2}
+--- !u!114 &1164095991642437101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164095991642437076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d321d38afcbd5c74d89fb42389fa8d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  avatarImage: {fileID: 0}
+  smallHealthCountText: {fileID: 0}
+  largeHealthCountText: {fileID: 0}
+  healthSprites:
+  - {fileID: 414355032, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: 661468045, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: 123013985, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: 1313492386, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: -25855389, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: -1889076527, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: 1272573675, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: -574464983, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  - {fileID: -1654605377, guid: c3e1607023dabb0468f752f99c002138, type: 3}
+  staminaSprites:
+  - {fileID: -1321127485, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: 612760354, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: -34269517, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: -106034196, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: -1382381131, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: -1124448026, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: -804763737, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: -50109086, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  - {fileID: 866198319, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
+  avatarSprites:
+  - {fileID: 522885570, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
+  - {fileID: 1452162521, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
+  - {fileID: 889250936, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
+  - {fileID: -2146474829, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
+  - {fileID: -564081154, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
+  - {fileID: 524040775, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
 --- !u!95 &1164095991642437097
 Animator:
   serializedVersion: 4
@@ -154,48 +213,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1164095991642437101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164095991642437076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d321d38afcbd5c74d89fb42389fa8d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  staminaBar: {fileID: 0}
-  avatarImage: {fileID: 0}
-  healthSprites:
-  - {fileID: 414355032, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: 661468045, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: 123013985, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: 1313492386, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: -25855389, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: -1889076527, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: 1272573675, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: -574464983, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  - {fileID: -1654605377, guid: c3e1607023dabb0468f752f99c002138, type: 3}
-  staminaSprites:
-  - {fileID: -1321127485, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: 612760354, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: -34269517, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: -106034196, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: -1382381131, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: -1124448026, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: -804763737, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: -50109086, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  - {fileID: 866198319, guid: 39694048cdc352b4fa2e6b76a8fc944e, type: 3}
-  avatarSprites:
-  - {fileID: 522885570, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
-  - {fileID: 1452162521, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
-  - {fileID: 889250936, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
-  - {fileID: -2146474829, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
-  - {fileID: -564081154, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
-  - {fileID: 524040775, guid: 8e42f3909ed015a4ea84e669a56876e4, type: 3}
 --- !u!61 &230981465705399030
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -222,21 +239,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5064544, y: 0.21141407}
   m_EdgeRadius: 0
---- !u!114 &230981465705399029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164095991642437076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c52b157e0511240abacd20298f2bda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  playerHealth: {fileID: 11400000, guid: 21edea629a36f2d4d90a87b69cbf5601, type: 2}
 --- !u!61 &1374494298659802559
 BoxCollider2D:
   m_ObjectHideFlags: 0
