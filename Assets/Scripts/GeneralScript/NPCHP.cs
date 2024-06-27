@@ -23,7 +23,7 @@ public class NPCHP : Health
         Destroy(gameObject);
     }
 
-    public override void TakeHeal(Medkit.MedkitType medkitType)
+    public override void TakeHeal(int healPoints)
     {
         throw new System.NotImplementedException();
     }

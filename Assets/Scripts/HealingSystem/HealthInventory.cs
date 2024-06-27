@@ -1,54 +1,40 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthInventory : MonoBehaviour
 {
-    [SerializeField] private int smallMedkitCount = 0;
-    [SerializeField] private int largeMedkitCount = 0;
+    [SerializeField] private int MedkitCount = 0;
 
-    [SerializeField] private TextMeshProUGUI smallMedkitText;
-    [SerializeField] private TextMeshProUGUI largeMedkitText;
+    [SerializeField] private TextMeshProUGUI MedkitText;
 
     [SerializeField] private PlayerHP playerHealth; // Скрипт здоровья игрока
 
     private void Start()
     {
-        //playerHealth = GetComponent<PlayerHP>();
         LoadInventory();
         UpdateUI();
     }
 
-    public void AddSmallMedkit(int amount)
+    public void AddMedkit(int amount)
     {
-        smallMedkitCount += amount;
-        SaveInventory();
-        UpdateUI();
-    }
-
-    public void AddLargeMedkit(int amount)
-    {
-        largeMedkitCount += amount;
+        MedkitCount += amount;
         SaveInventory();
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        smallMedkitText.text = smallMedkitCount.ToString();
-        largeMedkitText.text = largeMedkitCount.ToString();
+        MedkitText.text = MedkitCount.ToString();
     }
 
     private void SaveInventory()
     {
-        PlayerPrefs.SetInt("SmallMedkitCount", smallMedkitCount);
-        PlayerPrefs.SetInt("LargeMedkitCount", largeMedkitCount);
+        PlayerPrefs.SetInt("MedkitCount", MedkitCount);
     }
 
     private void LoadInventory()
     {
-        smallMedkitCount = PlayerPrefs.GetInt("SmallMedkitCount", 0);
-        largeMedkitCount = PlayerPrefs.GetInt("LargeMedkitCount", 0);
+        MedkitCount = PlayerPrefs.GetInt("MedkitCount", 0);
     }
 
     private void OnApplicationQuit()
@@ -66,32 +52,17 @@ public class HealthInventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            UseSmallMedkit();
-        }
-        else if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            UseLargeMedkit();
+            UseMedkit();
         }
 
     }
 
-    private void UseLargeMedkit()
+    private void UseMedkit()
     {
-        if (largeMedkitCount > 0)
+        if (MedkitCount > 0)
         {
-            largeMedkitCount--;
-            playerHealth.TakeHeal(Medkit.MedkitType.Large); // Лечение игрока
-        }
-        SaveInventory();
-        UpdateUI();
-    }
-
-    private void UseSmallMedkit()
-    {
-        if (smallMedkitCount > 0)
-        {
-            smallMedkitCount--;
-            playerHealth.TakeHeal(Medkit.MedkitType.Small); // Лечение игрока
+            MedkitCount--;
+            playerHealth.TakeHeal(Medkit.HEALPOINT); // Лечение игрока
         }
         SaveInventory();
         UpdateUI();

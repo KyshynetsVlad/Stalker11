@@ -289,18 +289,31 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 7473894701375048048, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 79.2185
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473894701375048048, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 480
+      value: 519.7
       objectReference: {fileID: 0}
     - target: {fileID: 7473894701375048048, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -425
+      value: -480
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473894701375048051, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
+      propertyPath: MedkitText
+      value: 
+      objectReference: {fileID: 1828799621}
+    - target: {fileID: 7473894701375048051, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
+      propertyPath: MedkitCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7473894701375048051, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 652591597}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7473894700449767926, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
 --- !u!114 &235296620 stripped
 MonoBehaviour:
@@ -3368,6 +3381,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b963c066bdc13c24ab375015fc5e5714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1828799621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7473894701367722886, guid: 5eca1d6d55f9bc04288eb73eeed361d7, type: 3}
+  m_PrefabInstance: {fileID: 101900707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2006113471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3710,6 +3734,14 @@ PrefabInstance:
     - target: {fileID: 3768869841956150982, guid: f89c2f11c10dca247bcd2327848fb9e8, type: 3}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768869841956150982, guid: f89c2f11c10dca247bcd2327848fb9e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768869841956150982, guid: f89c2f11c10dca247bcd2327848fb9e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3768869841956150982, guid: f89c2f11c10dca247bcd2327848fb9e8, type: 3}
       propertyPath: m_LocalPosition.x

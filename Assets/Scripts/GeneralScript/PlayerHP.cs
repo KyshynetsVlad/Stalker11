@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class PlayerHP : Health
 {
@@ -10,18 +11,9 @@ public class PlayerHP : Health
         currentHealth = playerHealth.currentHealth;
     }
 
-    public override void TakeHeal(Medkit.MedkitType medkitType)
+    public override void TakeHeal(int healPoints)
     {
-        // ѕолучаем процент восстановлени€ здоровь€ из типа аптечки
-        float healPercentage = (float)medkitType / 100.0f;
-
-        // –ассчитываем количество здоровь€, которое будет восстановлено
-        float healAmount = maxHealth * healPercentage;
-
-        // ¬осстанавливаем здоровье
-        currentHealth += healAmount;
-
-        // ѕровер€ем, чтобы текущее здоровье не превышало максимальное
+        currentHealth += maxHealth * 0.125f * (float)healPoints;
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;

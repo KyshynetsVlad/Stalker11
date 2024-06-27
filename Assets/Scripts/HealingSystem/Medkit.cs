@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Medkit : MonoBehaviour
 {
-    public enum MedkitType { Small = 10, Large = 30}
-    [SerializeField] private MedkitType medkitType;
     [SerializeField] private HealthInventory healthInventory;
-    
+    public const int HEALPOINT = 3; 
+
     public void SetHealthInventory(HealthInventory HealthInventory)
     {
         healthInventory = HealthInventory;
@@ -17,15 +16,7 @@ public class Medkit : MonoBehaviour
         {
             if (healthInventory != null)
             {
-                if (medkitType == MedkitType.Small)
-                {
-                    healthInventory.AddSmallMedkit(1);
-                }
-                else if (medkitType == MedkitType.Large)
-                {
-                    healthInventory.AddLargeMedkit(1);
-                }
-
+                healthInventory.AddMedkit(1);
                 Destroy(gameObject);
             }
         }

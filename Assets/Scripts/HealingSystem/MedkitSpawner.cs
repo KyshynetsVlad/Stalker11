@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class MedkitSpawner : MonoBehaviour
 {
-    [SerializeField] private Medkit smallMedkitPrefab;
-    [SerializeField] private Medkit largeMedkitPrefab;
+    [SerializeField] private Medkit MedkitPrefab;
     [SerializeField] private int numberOfMedkitsToSpawn = 5;
     [SerializeField] private BoxCollider2D locationBounds; // BoxCollider2D, который охватывает всю локацию
     [SerializeField] private HealthInventory healthInventory;
@@ -19,9 +18,8 @@ public class MedkitSpawner : MonoBehaviour
             Vector3 spawnPosition = GetValidSpawnPosition();
             if (spawnPosition != Vector3.zero)
             {
-                Medkit medkitPrefab = (Random.value > 0.5f) ? largeMedkitPrefab : smallMedkitPrefab;
-                medkitPrefab.SetHealthInventory(healthInventory);
-                Instantiate(medkitPrefab, spawnPosition, Quaternion.identity);
+                MedkitPrefab.SetHealthInventory(healthInventory);
+                Instantiate(MedkitPrefab, spawnPosition, Quaternion.identity);
             }
         }
     }
@@ -53,10 +51,10 @@ public class MedkitSpawner : MonoBehaviour
 
     bool IsPositionValid(Vector3 position)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 1f);
+        Collider2D[] colliders = FindObjectsOfType<Collider2D>();
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Enemy"))
+            if (collider.gameObject.tag == "Enemy")
             {
                 EnemyController enemy = collider.GetComponent<EnemyController>();
                 if (enemy != null && Vector3.Distance(position, enemy.transform.position) <= enemy.enemyVision)
