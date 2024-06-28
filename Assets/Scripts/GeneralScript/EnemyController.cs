@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : NPCHP
@@ -24,16 +22,18 @@ public class EnemyController : NPCHP
     internal Transform player;
     private float lastShotTime;
     private Vector2 patrolPoint;
-    private EnemyAnimationController animationController;
+    private Vector2 currentPosition;
+    private Vector2 direction;
     private Weapon weapon;
 
     public enum State { Patrolling, Chasing, Attacking, Returning }
     public State currentState;
+    private Animator animator;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        animationController = GetComponent<EnemyAnimationController>();
+        animator = GetComponent<Animator>();
 
         if (player == null)
         {
@@ -73,6 +73,7 @@ public class EnemyController : NPCHP
 
     private void Update()
     {
+        Animate();
         if (player == null || weapon == null)
         {
             return;
@@ -90,6 +91,7 @@ public class EnemyController : NPCHP
                 }
                 break;
             case State.Chasing:
+                firing = false;
                 ChasePlayer(distanceToPlayer);
                 if (distanceToPlayer > enemyVision)
                 {
@@ -164,6 +166,8 @@ public class EnemyController : NPCHP
         firing = true;
         if (distanceToPlayer <= shootingRange && Time.time > lastShotTime + enemyFireRate)
         {
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
             Shoot();
             lastShotTime = Time.time;
         }
@@ -185,10 +189,31 @@ public class EnemyController : NPCHP
 
     private void MoveTowards(Vector2 target, float speed)
     {
-        Vector2 currentPosition = transform.position;
-        Vector2 direction = (target - currentPosition).normalized;
-        animationController.UpdateMovementAnimation(direction, speed);
+        currentPosition = transform.position;
+        direction = (target - currentPosition).normalized;
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+
         transform.position = Vector2.MoveTowards(currentPosition, target, speed * Time.deltaTime);
+    }
+
+    void Animate()
+    {
+        if (animator == null)
+        {
+            Debug.LogError("Animator не призначено.");
+            return;
+        }
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            animator.SetFloat("FaceXNPC", direction.x);
+            animator.SetFloat("FaceYNPC", 0);
+        }
+        else
+        {
+            animator.SetFloat("FaceXNPC", 0);
+            animator.SetFloat("FaceYNPC", direction.y);
+        }
     }
 
     private void Shoot()
@@ -215,4 +240,6 @@ public class EnemyController : NPCHP
             lastShotTime = Time.time;
         }
     }
+
+
 }

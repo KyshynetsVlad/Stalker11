@@ -160,6 +160,7 @@ public class PlayerController1 : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Mouse1))
             {
+                Cursor.visible = false;
                 direction = aim - transform.position;
                 direction.Normalize();
                 crossHair.SetActive(true);
@@ -168,6 +169,7 @@ public class PlayerController1 : MonoBehaviour
             }
             else
             {
+                Cursor.visible = true;
                 isAiming = false;
                 crossHair.SetActive(false);
                 animator.SetBool("isAiming", false);
