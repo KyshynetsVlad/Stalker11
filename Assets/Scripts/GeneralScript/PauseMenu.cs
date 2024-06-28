@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public VectorValue playerPosition;
     public PlayerHealth health;
     public WeaponData weaponData;

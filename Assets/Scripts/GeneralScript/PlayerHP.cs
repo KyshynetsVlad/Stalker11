@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 
 public class PlayerHP : Health
 {
-    public  PlayerHealth playerHealth;
+    public PlayerHealth playerHealth;
+
+    [SerializeField]private PauseMenu pauseMenu; //to resetLvl;
 
     private void Start()
     {
@@ -36,6 +37,8 @@ public class PlayerHP : Health
 
     void Die()
     {
+        pauseMenu.Restart();
+        currentHealth = 100;
         Destroy(gameObject);
     }
 }

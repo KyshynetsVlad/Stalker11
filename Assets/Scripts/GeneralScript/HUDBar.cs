@@ -7,8 +7,6 @@ public class HUDBar : MonoBehaviour
     public Image healthBar;
     public Image staminaBar;
     public Image avatarImage;
-    public TextMeshProUGUI smallHealthCountText;
-    public TextMeshProUGUI largeHealthCountText;
 
     public Sprite[] healthSprites;
     public Sprite[] staminaSprites;

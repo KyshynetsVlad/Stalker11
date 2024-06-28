@@ -111,8 +111,8 @@ MonoBehaviour:
   pos: {fileID: 11400000, guid: 0320b7097a003ee488c0a315d542a9c9, type: 2}
   playerHealth: {fileID: 11400000, guid: 21edea629a36f2d4d90a87b69cbf5601, type: 2}
   weaponData: {fileID: 11400000, guid: ecba6b2e10497a849a13a041a57f9b0c, type: 2}
-  pauseMenu: {fileID: 0}
-  pause: {fileID: 0}
+  pauseMenu: {fileID: 8128787856922209858, guid: 647d51f0e653e0840a138f7f5760a527, type: 3}
+  pause: {fileID: 8128787856922209858, guid: 647d51f0e653e0840a138f7f5760a527, type: 3}
 --- !u!114 &230981465705399029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   playerHealth: {fileID: 11400000, guid: 21edea629a36f2d4d90a87b69cbf5601, type: 2}
+  pauseMenu: {fileID: 8128787856922209858, guid: 647d51f0e653e0840a138f7f5760a527, type: 3}
 --- !u!114 &1164095991642437101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +144,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   avatarImage: {fileID: 0}
-  smallHealthCountText: {fileID: 0}
-  largeHealthCountText: {fileID: 0}
   healthSprites:
   - {fileID: 414355032, guid: c3e1607023dabb0468f752f99c002138, type: 3}
   - {fileID: 661468045, guid: c3e1607023dabb0468f752f99c002138, type: 3}
