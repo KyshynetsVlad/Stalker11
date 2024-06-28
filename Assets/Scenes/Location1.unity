@@ -3400,6 +3400,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 90847608}
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
@@ -3555,25 +3559,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5358d0c8095a284a95530b81437e165, type: 3}
---- !u!1 &2059768477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4770071923300021047, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
-  m_PrefabInstance: {fileID: 2006113471}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2059768478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059768477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739de87bf47d45149851e5a713955d17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
 --- !u!1001 &831097593491585740
 PrefabInstance:
   m_ObjectHideFlags: 0

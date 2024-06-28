@@ -220,6 +220,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 694300890}
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
@@ -9815,6 +9819,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 694300890}
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
@@ -10320,6 +10328,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 694300890}
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
@@ -10391,6 +10403,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 694300890}
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 
@@ -10668,6 +10684,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 694300890}
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 
       objectReference: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
@@ -10728,6 +10748,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
+      propertyPath: patrolArea
+      value: 
+      objectReference: {fileID: 694300890}
     - target: {fileID: 4770071923300021040, guid: 6049ed49851028e4287afbbd7c7b6a20, type: 3}
       propertyPath: enemyWeapon
       value: 

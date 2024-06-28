@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4770071923300021043}
   - component: {fileID: 4770071923300021040}
   - component: {fileID: 230612650308544962}
+  - component: {fileID: 4113474744738227985}
+  - component: {fileID: 3043441060701442081}
   m_Layer: 0
   m_Name: Stalker - 1 Stay_0
   m_TagString: Enemy
@@ -78,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 1648758613, guid: 89dc90343397c7b49b68f5ea077580e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5f629e65c4a009498b8e959e9bb8501, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 1.02}
+    oldSize: {x: 0.6, y: 1.06}
     newSize: {x: 0.6, y: 1.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -168,13 +170,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5021e7a472a54647999181a36eaa30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
   moveSpeed: 0.5
   stoppingDistance: 3
   retreatDistance: 2
   shootingRange: 3
   enemyFireRate: 0.5
   enemyVision: 4
+  patrolSpeed: 0.4
+  chaseSpeed: 0.5
+  patrolArea: {fileID: 0}
+  health: 100
   enemyWeapon: {fileID: 8478868254895926147, guid: b80bccef233ab124d9442fdf9337e20e, type: 3}
+  lootItems:
+  - {fileID: 3768869841956150987, guid: f89c2f11c10dca247bcd2327848fb9e8, type: 3}
+  firing: 0
+  chaseStrategy: 0
+  currentState: 0
 --- !u!114 &230612650308544962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,4 +201,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
+--- !u!114 &4113474744738227985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770071923300021047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6dcfad7a579214892031f4a5947585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3043441060701442081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770071923300021047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ad8012ca91e494581ea9ab8a0a9e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
