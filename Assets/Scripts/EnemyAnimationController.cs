@@ -12,19 +12,14 @@ public class EnemyAnimationController : MonoBehaviour
         enemyController = GetComponent<EnemyController>();
     }
 
-    public void UpdateMovementAnimation(Vector2 direction)
+    public void UpdateMovementAnimation(Vector2 direction, float speed)
     {
         if (direction.magnitude > 0.1f)
         {
             lastDirection = direction;
-            if (direction.x > 0)
-                animator.Play("Move_Right");
-            else if (direction.x < 0)
-                animator.Play("Move_Left");
-            else if (direction.y > 0)
-                animator.Play("Move_Up");
-            else if (direction.y < 0)
-                animator.Play("Move_Down");
+            animator.SetFloat("Speed", speed);
+            animator.SetFloat("Horizontal", direction.x);
+            animator.SetFloat("Vertical", direction.y);
         }
         else
         {
@@ -37,31 +32,15 @@ public class EnemyAnimationController : MonoBehaviour
         if (enemyController.firing)
         {
             Vector2 directionToPlayer = (enemyController.player.position - transform.position).normalized;
-            if (Mathf.Abs(directionToPlayer.x) > Mathf.Abs(directionToPlayer.y))
-            {
-                if (directionToPlayer.x > 0)
-                    animator.Play("Idle_Right");
-                else
-                    animator.Play("Idle_Left");
-            }
-            else
-            {
-                if (directionToPlayer.y > 0)
-                    animator.Play("Idle_Up");
-                else
-                    animator.Play("Idle_Down");
-            }
+            animator.SetFloat("Horizontal", directionToPlayer.x);
+            animator.SetFloat("Vertical", directionToPlayer.y);
+            animator.SetFloat("Speed", 0);
         }
         else
         {
-            if (lastDirection.x > 0)
-                animator.Play("Idle_Right");
-            else if (lastDirection.x < 0)
-                animator.Play("Idle_Left");
-            else if (lastDirection.y > 0)
-                animator.Play("Idle_Up");
-            else if (lastDirection.y < 0)
-                animator.Play("Idle_Down");
+            animator.SetFloat("Horizontal", lastDirection.x);
+            animator.SetFloat("Vertical", lastDirection.y);
+            animator.SetFloat("Speed", 0);
         }
     }
 }

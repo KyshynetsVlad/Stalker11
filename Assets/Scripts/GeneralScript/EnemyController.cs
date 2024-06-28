@@ -24,9 +24,8 @@ public class EnemyController : NPCHP
     internal Transform player;
     private float lastShotTime;
     private Vector2 patrolPoint;
-    private Animator animator;
-    private Weapon weapon;
     private EnemyAnimationController animationController;
+    private Weapon weapon;
 
     public enum State { Patrolling, Chasing, Attacking, Returning }
     public State currentState;
@@ -34,7 +33,6 @@ public class EnemyController : NPCHP
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        animator = GetComponent<Animator>();
         animationController = GetComponent<EnemyAnimationController>();
 
         if (player == null)
@@ -189,7 +187,7 @@ public class EnemyController : NPCHP
     {
         Vector2 currentPosition = transform.position;
         Vector2 direction = (target - currentPosition).normalized;
-        animationController.UpdateMovementAnimation(direction);
+        animationController.UpdateMovementAnimation(direction, speed);
         transform.position = Vector2.MoveTowards(currentPosition, target, speed * Time.deltaTime);
     }
 
